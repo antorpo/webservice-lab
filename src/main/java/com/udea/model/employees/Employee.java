@@ -1,0 +1,51 @@
+package com.udea.model.employees;
+
+import io.swagger.annotations.ApiModelProperty;
+import java.io.Serializable;
+import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import lombok.NonNull;
+
+/**
+ * Employee
+ * @author Antonio
+ */
+public class Employee implements Serializable {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    @ApiModelProperty(notes = "The database generated employee id")
+    private Long Id;
+    
+    @Column(name = "firstname", nullable = false, length = 80)
+    @ApiModelProperty(notes = "The first name")
+    private @NonNull String firstName;
+    
+    @Column(name = "lastname", nullable = false, length = 80)
+    @ApiModelProperty(notes = "The last name")
+    private @NonNull String lastName;
+
+    @Column(name = "email", nullable = false, length = 80)
+    @ApiModelProperty(notes = "The employee email")
+    private @NonNull String email;
+    
+    @Column(name = "salary", nullable = false)
+    @ApiModelProperty(notes = "The employee salary")
+    private double salary;
+    
+    @Column(name = "position", nullable = false, length = 80)
+    @ApiModelProperty(notes = "The employee position")
+    private @NonNull String position;
+    
+    @Column(name = "dependency", nullable = false, length = 80)
+    @ApiModelProperty(notes = "The employee dependency")
+    private @NonNull String dependency;
+ 
+    @Column(name = "admissionDate", nullable = false, length = 80)
+    @ApiModelProperty(notes = "The employee admission date")
+    private @NonNull Date admissionDate;
+}
