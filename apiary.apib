@@ -1,0 +1,247 @@
+FORMAT: 1A
+HOST: https://udea-employee-spring-api.herokuapp.com/
+
+# UdeA SpringBoot Employee API
+
+Software Architecture - API REST Example of employee managment system
+
+## Employees [/api/v1/employees]
+Resources related to employees of a software development company
+
+### List All [GET /api/v1/employees/]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+        [
+            {
+                "firstName": "Antonio",
+                "lastName": "Gonzalez",
+                "email": "antonio.gonzalezr@udea.edu.co",
+                "salary": 4000000.0,
+                "position": "Backend Developer",
+                "dependency": "Development",
+                "admissionDate": "2021-09-18",
+                "id": 1
+            }
+        ]
+
+### Add [POST /api/v1/employees/add]
+
++ Request (application/json)
+    + Attributes (object)
+        + firstName (string)
+        + lastName (string)
+        + email (string)
+        + salary (number)
+        + position (string)
+        + admissionDate (string)
+
++ Response 200 (application/json)
+
+        {
+            "firstName": "Antonio",
+            "lastName": "Gonzalez",
+            "email": "antonio.gonzalezr@udea.edu.co",
+            "salary": 4000000.0,
+            "position": "Backend Developer",
+            "dependency": "Development",
+            "admissionDate": "2021-09-18",
+            "id": 1
+        }
+
+### Get by Id [GET /api/v1/employees/{id}]
+
++ Parameters
+    + id - Employee Id
+
++ Response 200 (application/json)
+
+        {
+            "firstName": "Antonio",
+            "lastName": "Gonzalez",
+            "email": "antonio.gonzalezr@udea.edu.co",
+            "salary": 4000000.0,
+            "position": "Backend Developer",
+            "dependency": "Development",
+            "admissionDate": "2021-09-18",
+            "id": 1
+        }
+        
+        
+### Delete by Id [DELETE /api/v1/employees/delete/{id}]
+
++ Parameters
+    + id - Employee Id
+    
++ Response 200 (application/json)
+
+        {
+            "message": "Successfully deleted"
+        }
+        
+        
+### Update [PUT /api/v1/employees/update]
+
++ Request (application/json)
+    + Attributes (object)
+        + id (number)
+        + firstName (string)
+        + lastName (string)
+        + email (string)
+        + salary (number)
+        + position (string)
+        + admissionDate (string)
+        
++ Response 200 (application/json)
+
+        {
+            "firstName": "Antonio",
+            "lastName": "Gonzalez",
+            "email": "antonio.gonzalezr@udea.edu.co",
+            "salary": 4000000.0,
+            "position": "Backend Developer",
+            "dependency": "Development",
+            "admissionDate": "2021-09-18",
+            "id": 1
+        }
+        
+
+## PayRolls [/api/v1/payrolls]
+Resources related to payrolls of a software development company
+
+### List All [GET /api/v1/payrolls/]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+        [
+            {
+                "idEmployee": 2,
+                "baseSalary": 4000000.0,
+                "paySalary": 3850000.0,
+                "paymentConcepts": [
+                    {
+                        "idEmployee": 2,
+                        "type": "Credito",
+                        "name": "Aporte salud",
+                        "value": 150000.0,
+                        "id": 1
+                    }
+                ]
+            }
+        ]
+    
+### Get by Employee Id [GET /api/v1/payrolls/{id}]
+
++ Parameters
+    + id - Employee Id
+
++ Response 200 (application/json)
+
+        {
+            "idEmployee": 2,
+            "baseSalary": 4000000.0,
+            "paySalary": 3850000.0,
+            "paymentConcepts": [
+                {
+                    "idEmployee": 2,
+                    "type": "Credito",
+                    "name": "Aporte salud",
+                    "value": 150000.0,
+                    "id": 1
+                }
+            ]
+        }
+        
+### Employee Bonus by Id [PUT /api/v1/payrolls/bonus/{id}]
+
++ Parameters
+    + id - Employee Id
+
++ Response 200 (application/json)
+
+        {
+            "message": "Bonus applied successfully"
+        }
+
+### List All Concepts [GET /api/v1/payrolls/concepts]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+        [
+            {
+                "idEmployee": 2,
+                "type": "Credito",
+                "name": "Aporte salud",
+                "value": 150000.0,
+                "id": 1
+            }
+        ]
+
+### Add Concept [POST /api/v1/payrolls/concepts/add]
+
++ Request (application/json)
+    + Attributes (object)
+        + idEmployee (number)
+        + type (string)
+        + name (string)
+        + value (number)
+
++ Response 200 (application/json)
+
+        {
+            "idEmployee": 2,
+            "type": "Credito",
+            "name": "Aporte salud",
+            "value": 150000
+        }
+                
+### Get Concept by Id [GET /api/v1/payrolls/concepts/{id}]
+
++ Parameters
+    + id - Concept Id
+
++ Response 200 (application/json)
+
+        {
+            "idEmployee": 2,
+            "type": "Credito",
+            "name": "Aporte salud",
+            "value": 150000.0,
+            "id": 1
+        }
+        
+### Delete Concept by Id [DELETE /api/v1/payrolls/concepts/delete/{id}]
+
++ Parameters
+    + id - Employee Id
+    
++ Response 200 (application/json)
+
+        {
+            "message": "Successfully deleted"
+        }
+
+### Update Concept [PUT /api/v1/employees/concepts/update]
+
++ Request (application/json)
+    + Attributes (object)
+        + idEmployee (number)
+        + type (string)
+        + name (string)
+        + value (number)
+        
++ Response 200 (application/json)
+
+        {
+            "idEmployee": 2,
+            "type": "Credito",
+            "name": "Aporte salud",
+            "value": 150000.0,
+            "id": 1
+        }
